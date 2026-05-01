@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon — Peace+Pines Paradise</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --pine: #2D3B2D;
+  --bark: #5C4A3A;
+  --cream: #F5F0E8;
+  --sage: #8B9E7E;
+  --gold: #C9A84C;
+  --gold-light: #E8D59A;
+  --smoke: #6B6B6B;
+  --snow: #FAFAF7;
+  --frost: #E8E4DC;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--snow);
+  color: var(--pine);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: var(--pine);
+  padding: 1.25rem 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+header a {
+  color: rgba(245,240,232,0.65); text-decoration: none;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em;
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s;
+}
+header a:hover { color: var(--gold-light); }
+header .sep { color: rgba(245,240,232,0.3); }
+header .current { color: var(--cream); font-weight: 600; font-size: 0.82rem; letter-spacing: 0.05em; }
+
+main {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.content { max-width: 480px; }
+
+.logo-img {
+  width: 90px; height: 90px; object-fit: contain;
+  margin: 0 auto 2rem;
+  display: block;
+  opacity: 0.85;
+}
+
+.label {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--pine); line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--smoke); font-size: 1rem;
+  line-height: 1.75; margin-bottom: 2rem;
+}
+
+.back-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.8rem 1.75rem; border-radius: 8px;
+  background: var(--pine); color: var(--cream);
+  text-decoration: none; font-size: 0.9rem; font-weight: 600;
+  transition: all 0.3s;
+}
+.back-btn:hover {
+  background: var(--bark);
+  box-shadow: 0 4px 16px rgba(45,59,45,0.2);
+}
+
+footer {
+  background: var(--pine); color: rgba(245,240,232,0.4);
+  padding: 1.5rem; text-align: center; font-size: 0.8rem;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Peace+Pines Paradise
+  </a>
+  <span class="sep">›</span>
+  <span class="current">Coming Soon</span>
+</header>
+
+<main>
+  <div class="content">
+    <img src="assets/images/ppp_logo_transparent.png" alt="Peace+Pines Paradise" class="logo-img">
+    <div class="label">Coming Soon</div>
+    <h1>We're working on it</h1>
+    <p>This page is being put together and will be available shortly. Check back soon!</p>
+    <a href="index.html" class="back-btn">
+      ← Back to Home
+    </a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2026 Peace+Pines Paradise. All rights reserved.
+</footer>
+
+</body>
+</html>

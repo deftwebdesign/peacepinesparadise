@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peace+Pines Paradise — Parks, AZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="assets/images/ppp_logo_transparent.png">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --pine: #2D3B2D;
+  --bark: #5C4A3A;
+  --cream: #F5F0E8;
+  --sage: #8B9E7E;
+  --sage-light: #B8C9AD;
+  --gold: #C9A84C;
+  --gold-light: #E8D59A;
+  --ember: #C75B39;
+  --charcoal: #2A2A2A;
+  --smoke: #6B6B6B;
+  --snow: #FAFAF7;
+  --frost: #E8E4DC;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--snow);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(45, 59, 45, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.4s;
+}
+nav .nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem; height: 64px;
+}
+nav .logo {
+  font-family: var(--font-display); font-size: 1.25rem; font-weight: 600;
+  color: var(--cream); letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none;
+}
+nav .logo svg { width: 28px; height: 28px; fill: var(--gold); }
+nav .nav-links { display: flex; gap: 0; }
+nav .nav-links a {
+  color: rgba(245,240,232,0.75); text-decoration: none;
+  font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 0.5rem 1rem;
+  transition: color 0.3s;
+  position: relative;
+}
+nav .nav-links a:hover, nav .nav-links a.active {
+  color: var(--gold-light);
+}
+nav .nav-links a.active::after {
+  content: ''; position: absolute; bottom: 0; left: 1rem; right: 1rem;
+  height: 2px; background: var(--gold); border-radius: 1px;
+}
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 32px; position: relative;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px; background: var(--cream);
+  position: absolute; left: 5px; transition: all 0.3s;
+}
+.hamburger span:nth-child(1) { top: 9px; }
+.hamburger span:nth-child(2) { top: 15px; }
+.hamburger span:nth-child(3) { top: 21px; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  background: url('assets/images/cabin_background.png') center center / cover no-repeat;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    linear-gradient(165deg, rgba(45,59,45,0.55) 0%, rgba(92,74,58,0.45) 40%, rgba(45,59,45,0.6) 100%),
+    radial-gradient(ellipse at 20% 80%, rgba(201,168,76,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(139,158,126,0.1) 0%, transparent 50%);
+}
+.hero-content {
+  position: relative; text-align: center; padding: 2rem;
+  max-width: 800px;
+  animation: fadeUp 1.2s ease-out;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 100px; padding: 0.4rem 1.2rem;
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--gold-light);
+  margin-bottom: 1.5rem;
+}
+.hero-badge::before {
+  content: '★'; font-size: 0.7rem;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--cream); line-height: 1.05; font-weight: 700;
+  margin-bottom: 1rem;
+}
+.hero h1 em {
+  font-style: italic; color: var(--gold-light);
+  display: block; font-size: 0.55em; font-weight: 400;
+  margin-top: 0.3rem;
+}
+.hero-sub {
+  font-size: 1.15rem; color: rgba(245,240,232,0.7);
+  max-width: 520px; margin: 0 auto 2.5rem;
+  font-weight: 300; line-height: 1.7;
+}
+.hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 2rem; border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all 0.3s ease;
+}
+.btn-primary {
+  background: var(--gold); color: var(--pine);
+}
+.btn-primary:hover {
+  background: var(--gold-light); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(201,168,76,0.3);
+}
+.btn-outline {
+  background: transparent; color: var(--cream);
+  border: 1.5px solid rgba(245,240,232,0.3);
+}
+.btn-outline:hover {
+  border-color: var(--cream); background: rgba(245,240,232,0.08);
+}
+
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  animation: bob 2.5s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+.scroll-hint svg { width: 24px; height: 24px; stroke: rgba(245,240,232,0.4); fill: none; }
+
+/* ─── SECTIONS ─── */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--sage);
+  margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--pine); line-height: 1.15; margin-bottom: 1rem;
+}
+.section-desc {
+  font-size: 1.05rem; color: var(--smoke); max-width: 600px;
+  line-height: 1.7; margin-bottom: 3rem; font-weight: 300;
+}
+
+/* ─── AMENITIES ─── */
+#amenities { background: var(--cream); }
+.amenities-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.amenity-card {
+  background: var(--snow); border-radius: 12px;
+  padding: 1.75rem; display: flex; align-items: flex-start; gap: 1rem;
+  border: 1px solid var(--frost);
+  transition: all 0.3s ease;
+}
+.amenity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(45,59,45,0.08);
+  border-color: var(--sage-light);
+}
+.amenity-icon {
+  width: 44px; height: 44px; min-width: 44px;
+  background: linear-gradient(135deg, var(--sage), var(--pine));
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+}
+.amenity-card h3 {
+  font-size: 0.95rem; font-weight: 600; color: var(--pine);
+  margin-bottom: 0.25rem;
+}
+.amenity-card p {
+  font-size: 0.82rem; color: var(--smoke); line-height: 1.5;
+}
+
+/* ─── GUEST INFO ─── */
+#guestinfo { background: var(--snow); }
+.doc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.doc-card {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  padding: 1.75rem 1.75rem 3rem; background: white; border-radius: 14px;
+  border: 1.5px solid var(--frost); text-decoration: none; color: inherit;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.doc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(45,59,45,0.1);
+  border-color: var(--sage-light);
+}
+.doc-icon {
+  width: 48px; height: 48px; min-width: 48px;
+  background: linear-gradient(135deg, var(--ember), var(--bark));
+  border-radius: 12px; display: flex; align-items: center; justify-content: center;
+}
+.doc-icon svg { width: 24px; height: 24px; color: white; }
+.doc-info { flex: 1; }
+.doc-info h3 {
+  font-family: var(--font-display); font-size: 1.1rem;
+  color: var(--pine); margin-bottom: 0.35rem;
+}
+.doc-info p {
+  font-size: 0.85rem; color: var(--smoke); line-height: 1.6;
+}
+.doc-action {
+  position: absolute; bottom: 1.75rem; right: 1.75rem;
+  font-size: 0.78rem; font-weight: 600; color: var(--sage);
+  text-transform: uppercase; letter-spacing: 0.05em;
+  transition: color 0.3s;
+}
+.doc-card:hover .doc-action { color: var(--pine); }
+
+/* ─── AVAILABILITY ─── */
+#availability { background: var(--snow); }
+.avail-wrapper {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: start;
+}
+.calendar-container {
+  background: white; border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  border: 1px solid var(--frost); overflow: hidden;
+}
+.cal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background: var(--pine); color: var(--cream);
+}
+.cal-header h3 { font-family: var(--font-display); font-size: 1.1rem; }
+.cal-nav {
+  background: rgba(255,255,255,0.1); border: none; color: var(--cream);
+  width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; transition: background 0.2s;
+}
+.cal-nav:hover { background: rgba(255,255,255,0.2); }
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  padding: 1rem; gap: 2px;
+}
+.cal-day-label {
+  text-align: center; font-size: 0.7rem; font-weight: 600;
+  color: var(--smoke); padding: 0.5rem 0;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.cal-day {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; font-size: 0.85rem; color: var(--charcoal);
+  cursor: default; position: relative;
+}
+.cal-day.empty { visibility: hidden; }
+.cal-day.available {
+  background: rgba(139,158,126,0.12); color: var(--pine); font-weight: 500;
+}
+.cal-day.booked {
+  background: rgba(199,91,57,0.08); color: rgba(199,91,57,0.5);
+  text-decoration: line-through;
+}
+.cal-day.today {
+  background: var(--gold); color: white; font-weight: 600;
+  box-shadow: 0 2px 8px rgba(201,168,76,0.3);
+}
+
+.booking-info {
+  padding: 1rem 0;
+}
+.booking-info h3 {
+  font-family: var(--font-display); font-size: 1.5rem; color: var(--pine);
+  margin-bottom: 1rem;
+}
+.booking-info p {
+  color: var(--smoke); line-height: 1.8; margin-bottom: 1.5rem;
+}
+.booking-links { display: flex; flex-direction: column; gap: 0.75rem; }
+.booking-link {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 1.25rem; border-radius: 12px;
+  background: white; border: 1.5px solid var(--frost);
+  text-decoration: none; color: var(--charcoal);
+  transition: all 0.3s ease;
+}
+.booking-link:hover {
+  border-color: var(--sage); transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+.booking-link-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; font-weight: 700;
+}
+.booking-link-icon.airbnb { background: #FF5A5F15; color: #FF5A5F; }
+.booking-link-icon.vrbo { background: #0e47a115; color: #0e47a1; }
+.booking-link .bl-label { font-size: 0.78rem; color: var(--smoke); }
+.booking-link .bl-name { font-weight: 600; font-size: 0.95rem; }
+
+/* ─── VIDEOS ─── */
+#videos { background: var(--pine); color: var(--cream); }
+#videos .section-label { color: var(--sage-light); }
+#videos .section-title { color: var(--cream); }
+#videos .section-desc { color: rgba(245,240,232,0.6); }
+
+.video-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.video-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; overflow: hidden;
+  transition: all 0.3s ease;
+}
+.video-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  border-color: rgba(201,168,76,0.3);
+}
+.video-thumb {
+  aspect-ratio: 16/9; background: rgba(255,255,255,0.03);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.video-thumb::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(139,158,126,0.2), rgba(201,168,76,0.1));
+}
+.play-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: rgba(201,168,76,0.9); display: flex;
+  align-items: center; justify-content: center;
+  position: relative; z-index: 1;
+  transition: transform 0.3s, background 0.3s;
+}
+.video-card:hover .play-btn { transform: scale(1.1); background: var(--gold); }
+.play-btn svg { width: 22px; height: 22px; fill: var(--pine); margin-left: 3px; }
+.video-info { padding: 1.25rem; }
+.video-info h3 { font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem; }
+.video-info p { font-size: 0.82rem; color: rgba(245,240,232,0.5); }
+
+/* ─── LOCATION / MAP ─── */
+#location { background: var(--cream); }
+.location-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: start;
+}
+.map-embed {
+  border-radius: 16px; overflow: hidden; height: 420px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 3px solid white;
+}
+.map-embed iframe { width: 100%; height: 100%; border: 0; }
+.location-details h3 {
+  font-family: var(--font-display); font-size: 1.5rem;
+  color: var(--pine); margin-bottom: 1rem;
+}
+.location-details p {
+  color: var(--smoke); line-height: 1.8; margin-bottom: 1.5rem;
+}
+.location-highlights {
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.loc-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.75rem 1rem; background: var(--snow);
+  border-radius: 10px; border: 1px solid var(--frost);
+}
+.loc-item-icon {
+  width: 36px; height: 36px; min-width: 36px;
+  background: linear-gradient(135deg, var(--sage), var(--pine));
+  border-radius: 8px; display: flex; align-items: center;
+  justify-content: center; font-size: 1rem;
+}
+.loc-item span { font-size: 0.9rem; color: var(--charcoal); font-weight: 500; }
+
+/* ─── GUESTBOOK ─── */
+#guestbook { background: var(--snow); }
+.guestbook-layout {
+  display: grid; grid-template-columns: 400px 1fr; gap: 3rem;
+  align-items: start;
+}
+.gb-form {
+  background: white; border-radius: 16px; padding: 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+  border: 1px solid var(--frost);
+  position: sticky; top: 84px;
+}
+.gb-form h3 {
+  font-family: var(--font-display); font-size: 1.25rem;
+  color: var(--pine); margin-bottom: 0.5rem;
+}
+.gb-form > p {
+  font-size: 0.85rem; color: var(--smoke); margin-bottom: 1.5rem;
+}
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block; font-size: 0.78rem; font-weight: 600;
+  color: var(--bark); margin-bottom: 0.35rem;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--frost); border-radius: 8px;
+  font-family: var(--font-body); font-size: 0.9rem;
+  background: var(--snow); color: var(--charcoal);
+  transition: border-color 0.3s;
+  outline: none;
+}
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--sage);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.star-rating { display: flex; gap: 0.25rem; margin-top: 0.35rem; }
+.star-rating button {
+  background: none; border: none; cursor: pointer;
+  font-size: 1.5rem; color: var(--frost);
+  transition: color 0.2s, transform 0.2s;
+}
+.star-rating button:hover { transform: scale(1.15); }
+.star-rating button.active { color: var(--gold); }
+.submit-btn {
+  width: 100%; padding: 0.85rem;
+  background: var(--pine); color: var(--cream);
+  border: none; border-radius: 8px; font-family: var(--font-body);
+  font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+.submit-btn:hover {
+  background: var(--bark);
+  box-shadow: 0 4px 16px rgba(45,59,45,0.2);
+}
+
+.gb-entries { display: flex; flex-direction: column; gap: 1.25rem; }
+.gb-entry {
+  background: white; border-radius: 14px; padding: 1.5rem;
+  border: 1px solid var(--frost);
+  transition: box-shadow 0.3s;
+  animation: slideIn 0.4s ease-out;
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.gb-entry:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+.gb-entry-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.gb-entry-author {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.gb-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--sage), var(--pine));
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-weight: 600; font-size: 0.9rem;
+}
+.gb-name { font-weight: 600; color: var(--pine); font-size: 0.95rem; }
+.gb-date { font-size: 0.78rem; color: var(--smoke); }
+.gb-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 1px; }
+.gb-text { color: var(--charcoal); line-height: 1.7; font-size: 0.92rem; }
+.gb-origin {
+  margin-top: 0.75rem; font-size: 0.78rem; color: var(--sage);
+  font-weight: 500;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--charcoal); color: rgba(245,240,232,0.5);
+  padding: 3rem 2rem; text-align: center;
+}
+footer .footer-inner { max-width: 1100px; margin: 0 auto; }
+footer .footer-logo {
+  font-family: var(--font-display); font-size: 1.3rem;
+  color: var(--cream); margin-bottom: 0.5rem;
+}
+footer p { font-size: 0.85rem; line-height: 1.8; }
+footer a { color: var(--gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .avail-wrapper, .location-grid, .guestbook-layout {
+    grid-template-columns: 1fr; gap: 2rem;
+  }
+  .gb-form { position: static; }
+  nav .nav-links { display: none; }
+  .hamburger { display: block; }
+  nav .nav-links.open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 64px; left: 0; right: 0;
+    background: rgba(45,59,45,0.97); padding: 1rem 0;
+    backdrop-filter: blur(16px);
+  }
+  nav .nav-links.open a {
+    padding: 0.75rem 2rem; font-size: 0.9rem;
+  }
+}
+@media (max-width: 600px) {
+  section { padding: 4rem 1.25rem; }
+  .hero h1 { font-size: 2.4rem; }
+  .video-grid { grid-template-columns: 1fr; }
+  .amenities-grid { grid-template-columns: 1fr 1fr; }
+  .map-embed { height: 280px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo" onclick="scrollToSection(event, 'hero')">
+      <img src="assets/images/ppp_logo_transparent.png" alt="Peace+Pines Paradise logo" style="width:32px;height:32px;object-fit:contain;">
+      Peace+Pines Paradise
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#amenities" onclick="scrollToSection(event, 'amenities')">Amenities</a>
+      <a href="#guestinfo" onclick="scrollToSection(event, 'guestinfo')">Guest Info</a>
+      <a href="#availability" onclick="scrollToSection(event, 'availability')">Availability</a>
+      <a href="#videos" onclick="scrollToSection(event, 'videos')">Video Tours</a>
+      <a href="#location" onclick="scrollToSection(event, 'location')">Location</a>
+      <a href="#guestbook" onclick="scrollToSection(event, 'guestbook')">Guestbook</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <img src="assets/images/ppp_logo_transparent.png" alt="Peace+Pines Paradise" style="display:block;margin:0 auto 1.25rem;width:100px;height:100px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3));">
+    <div class="hero-badge">Superhost · Parks, Arizona</div>
+    <h1>Peace+Pines<br>Paradise<em>A forest escape near Flagstaff</em></h1>
+    <p class="hero-sub">Nestled among the pines in Parks, AZ — your cozy mountain getaway with a wood stove, outdoor fire pit, and starlit skies just 25 minutes from Flagstaff.</p>
+    <div class="hero-actions">
+      <a href="https://www.airbnb.com/rooms/43425743" target="_blank" class="btn btn-primary">Book on Airbnb</a>
+      <a href="https://www.vrbo.com/1981263" target="_blank" class="btn btn-primary">Book on VRBO</a>
+      <a href="#amenities" onclick="scrollToSection(event, 'amenities')" class="btn btn-outline">Explore the Property</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round"><path d="M7 10l5 5 5-5"/></svg>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="section-inner">
+    <div class="section-label">What's Included</div>
+    <h2 class="section-title">Amenities & Comforts</h2>
+    <p class="section-desc">Everything you need for a relaxing mountain retreat — from cozy indoor comforts to outdoor gathering spaces under the pines.</p>
+    <div class="amenities-grid" id="amenitiesGrid"></div>
+  </div>
+</section>
+
+<!-- GUEST INFO -->
+<section id="guestinfo">
+  <div class="section-inner">
+    <div class="section-label">Before You Arrive</div>
+    <h2 class="section-title">Guest Information</h2>
+    <p class="section-desc">Everything you need to know for a smooth stay — from getting here to checking out. View or download each document below.</p>
+    <div class="doc-grid">
+      <a href="assets/docs/Directions_to_Peace_Pines_Paradise.pdf" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>Directions</h3>
+          <p>Step-by-step directions to the property from I-40, plus parking and entry instructions.</p>
+        </div>
+        <div class="doc-action">View PDF →</div>
+      </a>
+      <a href="assets/docs/House_Rules.pdf" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>House Rules</h3>
+          <p>A few simple guidelines to keep the property safe and enjoyable for everyone.</p>
+        </div>
+        <div class="doc-action">View PDF →</div>
+      </a>
+      <a href="assets/docs/Check_Out.pdf" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>Check-Out Info</h3>
+          <p>Check-out is by 11 AM. A quick rundown of what to do before you leave.</p>
+        </div>
+        <div class="doc-action">View PDF →</div>
+      </a>
+      <a href="coming_soon.html" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>Guide Book</h3>
+          <p>Local tips, cabin instructions, and everything you need for a great stay.</p>
+        </div>
+        <div class="doc-action">View PDF →</div>
+      </a>
+      <a href="internet.html" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>Internet</h3>
+          <p>High-speed Starlink satellite service — stream, work, and stay connected.</p>
+        </div>
+        <div class="doc-action">View Details →</div>
+      </a>
+      <a href="assets/images/floor_plan.jpg" target="_blank" class="doc-card">
+        <div class="doc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div class="doc-info">
+          <h3>Floor Plan</h3>
+          <p>A layout of the property.</p>
+        </div>
+        <div class="doc-action">View Image →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABILITY -->
+<section id="availability">
+  <div class="section-inner">
+    <div class="section-label">Plan Your Stay</div>
+    <h2 class="section-title">Availability & Booking</h2>
+    <p class="section-desc">Check our calendar for open dates, then book through your preferred platform.</p>
+    <div class="avail-wrapper">
+      <div class="calendar-container">
+        <div class="cal-header">
+          <button class="cal-nav" onclick="changeMonth(-1)">‹</button>
+          <h3 id="calMonth"></h3>
+          <button class="cal-nav" onclick="changeMonth(1)">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <div class="booking-info">
+        <h3>Ready to Book?</h3>
+        <p>Our calendar syncs with major platforms. For the most accurate availability and to secure your dates, book directly through Airbnb or VRBO.</p>
+        <div class="booking-links">
+          <a href="https://www.airbnb.com/rooms/43425743" target="_blank" class="booking-link">
+            <div class="booking-link-icon airbnb">A</div>
+            <div>
+              <div class="bl-label">Book on</div>
+              <div class="bl-name">Airbnb</div>
+            </div>
+          </a>
+          <a href="https://www.vrbo.com/1981263" target="_blank" class="booking-link">
+            <div class="booking-link-icon vrbo">V</div>
+            <div>
+              <div class="bl-label">Book on</div>
+              <div class="bl-name">VRBO</div>
+            </div>
+          </a>
+        </div>
+        <p style="margin-top:1.5rem; font-size:0.85rem; color: var(--smoke);">
+          <strong>Tip:</strong> For synced real-time availability, you can embed an iCal feed from your Airbnb or VRBO calendar. Contact us to set this up.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-inner">
+    <div class="section-label">Take a Tour</div>
+    <h2 class="section-title">Video Walkthroughs</h2>
+    <p class="section-desc">Explore every corner of the retreat before you arrive. Click a tour to watch on YouTube.</p>
+    <div class="video-grid" id="videoGrid"></div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <div class="section-label">Getting Here</div>
+    <h2 class="section-title">Find the Retreat</h2>
+    <p class="section-desc">Located in the pines of Parks, Arizona — an easy drive from Flagstaff, Sedona, and the Grand Canyon.</p>
+    <div class="location-grid">
+      <div class="map-embed">
+        <iframe
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=13150+E+Fallow+Deer+Road,+Parks,+AZ+86018"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Peace+Pines Paradise"></iframe>
+      </div>
+      <div class="location-details">
+        <h3>Parks, Arizona</h3>
+        <p>The retreat sits on Fallow Deer Road in the small mountain community of Parks — surrounded by Kaibab National Forest at an elevation of ~7,000 ft. Cool summers, snowy winters, and unbeatable stargazing year-round.</p>
+        <div class="location-highlights">
+          <div class="loc-item">
+            <div class="loc-item-icon">🚗</div>
+            <span>25 min to Flagstaff</span>
+          </div>
+          <div class="loc-item">
+            <div class="loc-item-icon">🏜️</div>
+            <span>1.5 hrs to Sedona</span>
+          </div>
+          <div class="loc-item">
+            <div class="loc-item-icon">🏞️</div>
+            <span>1.5 hrs to Grand Canyon South Rim</span>
+          </div>
+          <div class="loc-item">
+            <div class="loc-item-icon">⛷️</div>
+            <span>45 min to Snowbowl Ski Resort</span>
+          </div>
+          <div class="loc-item">
+            <div class="loc-item-icon">🌲</div>
+            <span>Kaibab National Forest at your doorstep</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUESTBOOK -->
+<section id="guestbook">
+  <div class="section-inner">
+    <div class="section-label">Guest Experiences</div>
+    <h2 class="section-title">Digital Guestbook</h2>
+    <p class="section-desc">Share your memories from the retreat. We love hearing about your stay!</p>
+    <div class="guestbook-layout">
+      <div class="gb-form">
+        <h3>Sign the Guestbook</h3>
+        <p>Tell us about your experience at Peace+Pines Paradise.</p>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" id="gbName" placeholder="Jane & John Doe">
+        </div>
+        <div class="form-group">
+          <label>Where are you from?</label>
+          <input type="text" id="gbFrom" placeholder="Phoenix, AZ">
+        </div>
+        <div class="form-group">
+          <label>When did you visit?</label>
+          <input type="month" id="gbDate">
+        </div>
+        <div class="form-group">
+          <label>Rating</label>
+          <div class="star-rating" id="starRating">
+            <button onclick="setRating(1)">★</button>
+            <button onclick="setRating(2)">★</button>
+            <button onclick="setRating(3)">★</button>
+            <button onclick="setRating(4)">★</button>
+            <button onclick="setRating(5)">★</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Your Message</label>
+          <textarea id="gbMsg" placeholder="What was the highlight of your stay?"></textarea>
+        </div>
+        <button class="submit-btn" onclick="submitGuestbook()">Post to Guestbook</button>
+      </div>
+      <div class="gb-entries" id="gbEntries"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Peace+Pines Paradise</div>
+    <p>13150 E. Fallow Deer Road, Parks, AZ 86018</p>
+    <p style="margin-top:0.75rem;">
+      <a href="https://www.airbnb.com/rooms/43425743" target="_blank">Airbnb</a> · 
+      <a href="https://www.vrbo.com/1981263" target="_blank">VRBO</a>
+    </p>
+    <p style="margin-top:1.5rem; font-size:0.75rem; opacity:0.6;">&copy; 2026 Peace+Pines Paradise. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// ─── NAV ───
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+function scrollToSection(e, id) {
+  e.preventDefault();
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('navLinks').classList.remove('open');
+}
+
+// Highlight active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// ─── AMENITIES ───
+const amenities = [
+  { icon: '🔥', name: 'Wood Stove', desc: 'Cozy warmth on chilly mountain evenings' },
+  { icon: '☕', name: 'Coffee Maker', desc: 'Drip coffee maker with complimentary grounds' },
+  { icon: '🛏️', name: 'Air Mattress', desc: 'Extra sleeping space for additional guests' },
+  { icon: '👶', name: 'High Chair', desc: 'Family-friendly dining for little ones' },
+  { icon: '🍳', name: 'Air Fryer', desc: 'Quick and easy cooking for any meal' },
+  { icon: '⛱️', name: 'Gazebo', desc: 'Shaded outdoor lounging area' },
+  { icon: '🥩', name: 'Gas Barbecue', desc: 'Full-size propane grill for cookouts' },
+  { icon: '🔥', name: 'Propane Fire Pit', desc: 'Evenings under the stars around the flames' },
+  { icon: '📶', name: 'Wi-Fi', desc: 'Stay connected in the forest' },
+  { icon: '🅿️', name: 'Free Parking', desc: 'Plenty of space for vehicles' },
+  { icon: '🧺', name: 'Washer & Dryer', desc: 'Full laundry available on-site' },
+  { icon: '🌡️', name: 'Heating & Cooling', desc: 'Central heat plus the wood stove' },
+  { icon: '📺', name: 'Smart TV', desc: 'Stream your favorites with Netflix & more' },
+  { icon: '🍽️', name: 'Full Kitchen', desc: 'Everything you need to cook a feast' },
+  { icon: '🧹', name: 'Clean Linens', desc: 'Fresh towels and bedding provided' },
+  { icon: '🌲', name: 'Private Lot', desc: 'Surrounded by ponderosa pines' },
+];
+const amenGrid = document.getElementById('amenitiesGrid');
+amenities.forEach(a => {
+  amenGrid.innerHTML += `
+    <div class="amenity-card">
+      <div class="amenity-icon">${a.icon}</div>
+      <div><h3>${a.name}</h3><p>${a.desc}</p></div>
+    </div>`;
+});
+
+// ─── CALENDAR ───
+let calDate = new Date();
+function renderCalendar() {
+  const year = calDate.getFullYear();
+  const month = calDate.getMonth();
+  const today = new Date();
+  document.getElementById('calMonth').textContent =
+    calDate.toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const grid = document.getElementById('calGrid');
+  grid.innerHTML = '';
+  ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].forEach(d => {
+    grid.innerHTML += `<div class="cal-day-label">${d}</div>`;
+  });
+  const first = new Date(year, month, 1).getDay();
+  const days = new Date(year, month + 1, 0).getDate();
+  // Simulate some booked dates (random for demo)
+  const seed = year * 100 + month;
+  const booked = new Set();
+  for (let i = 0; i < 8; i++) {
+    booked.add(((seed * 7 + i * 13) % days) + 1);
+  }
+  for (let i = 0; i < first; i++) {
+    grid.innerHTML += '<div class="cal-day empty"></div>';
+  }
+  for (let d = 1; d <= days; d++) {
+    const isToday = d === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+    const isPast = new Date(year, month, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    let cls = 'cal-day';
+    if (isToday) cls += ' today';
+    else if (isPast) cls += ' booked';
+    else if (booked.has(d)) cls += ' booked';
+    else cls += ' available';
+    grid.innerHTML += `<div class="${cls}">${d}</div>`;
+  }
+}
+function changeMonth(dir) {
+  calDate.setMonth(calDate.getMonth() + dir);
+  renderCalendar();
+}
+renderCalendar();
+
+// ─── VIDEOS ───
+const videos = [
+  { title: 'Full Property Tour', desc: 'Walk through every room and outdoor space', id: 'placeholder1' },
+  { title: 'Kitchen & Living Area', desc: 'Cozy interiors with wood stove and full kitchen', id: 'placeholder2' },
+  { title: 'Outdoor Spaces', desc: 'Gazebo, fire pit, BBQ area, and forest views', id: 'placeholder3' },
+  { title: 'Bedrooms & Bathrooms', desc: 'Sleeping arrangements and amenities', id: 'placeholder4' },
+  { title: 'Seasonal Highlights', desc: 'What to expect each time of year', id: 'placeholder5' },
+  { title: 'Wood Stove Instructions', desc: 'How to safely light, use, and shut down the wood stove', id: 'Jb1mkvwfncs' },
+];
+const vGrid = document.getElementById('videoGrid');
+videos.forEach(v => {
+  const isReal = !v.id.startsWith('placeholder');
+  const thumb = isReal ? `url('https://img.youtube.com/vi/${v.id}/maxresdefault.jpg')` : '';
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  card.style.cursor = 'pointer';
+  card.innerHTML = `
+    <div class="video-thumb" style="${thumb ? `background-image:${thumb};background-size:cover;background-position:center;` : ''}">
+      <div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg></div>
+    </div>
+    <div class="video-info">
+      <h3>${v.title}</h3>
+      <p>${v.desc}</p>
+    </div>`;
+  card.addEventListener('click', () => {
+    const url = isReal ? `https://youtu.be/${v.id}` : 'https://youtube.com';
+    window.open(url, '_blank');
+  });
+  vGrid.appendChild(card);
+});
+
+// ─── GUESTBOOK ───
+let currentRating = 0;
+function setRating(n) {
+  currentRating = n;
+  document.querySelectorAll('#starRating button').forEach((b, i) => {
+    b.classList.toggle('active', i < n);
+  });
+}
+
+// Sample entries
+const sampleEntries = [
+  { name: 'Sarah & Mike', from: 'Phoenix, AZ', date: 'March 2026', rating: 5, msg: 'Absolutely magical! The wood stove made the cold evenings so cozy, and the stargazing from the fire pit was unforgettable. Kids loved exploring the forest. We\'ll be back every winter!' },
+  { name: 'The Johnsons', from: 'Los Angeles, CA', date: 'January 2026', rating: 5, msg: 'Perfect base camp for our Grand Canyon trip. The kitchen was fully stocked and the BBQ was a hit. Snow on the trees was like a holiday postcard.' },
+  { name: 'Emily R.', from: 'Tucson, AZ', date: 'October 2025', rating: 5, msg: 'The fall colors were incredible! We spent every evening by the propane fire pit. The retreat is immaculate and thoughtfully equipped. The air fryer was a nice surprise!' },
+];
+
+function renderEntries() {
+  const container = document.getElementById('gbEntries');
+  const stored = JSON.parse(localStorage.getItem('gb_entries') || '[]');
+  const all = [...stored, ...sampleEntries];
+  container.innerHTML = '';
+  all.forEach(e => {
+    const initials = e.name.split(' ').map(w => w[0]).slice(0, 2).join('');
+    const stars = '★'.repeat(e.rating) + '☆'.repeat(5 - e.rating);
+    container.innerHTML += `
+      <div class="gb-entry">
+        <div class="gb-entry-header">
+          <div class="gb-entry-author">
+            <div class="gb-avatar">${initials}</div>
+            <div><div class="gb-name">${e.name}</div><div class="gb-date">${e.date}</div></div>
+          </div>
+          <div class="gb-stars">${stars}</div>
+        </div>
+        <div class="gb-text">${e.msg}</div>
+        ${e.from ? `<div class="gb-origin">📍 ${e.from}</div>` : ''}
+      </div>`;
+  });
+}
+renderEntries();
+
+function submitGuestbook() {
+  const name = document.getElementById('gbName').value.trim();
+  const from = document.getElementById('gbFrom').value.trim();
+  const dateVal = document.getElementById('gbDate').value;
+  const msg = document.getElementById('gbMsg').value.trim();
+  if (!name || !msg || !currentRating) {
+    alert('Please fill in your name, rating, and message.');
+    return;
+  }
+  const dateStr = dateVal
+    ? new Date(dateVal + '-01').toLocaleString('en-US', { month: 'long', year: 'numeric' })
+    : new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const entry = { name, from, date: dateStr, rating: currentRating, msg };
+  const stored = JSON.parse(localStorage.getItem('gb_entries') || '[]');
+  stored.unshift(entry);
+  localStorage.setItem('gb_entries', JSON.stringify(stored));
+  document.getElementById('gbName').value = '';
+  document.getElementById('gbFrom').value = '';
+  document.getElementById('gbDate').value = '';
+  document.getElementById('gbMsg').value = '';
+  setRating(0);
+  renderEntries();
+}
+</script>
+
+</body>
+</html>
