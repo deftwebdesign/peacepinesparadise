@@ -12,8 +12,8 @@ export default async function handler(req, res) {
   if (req.method === 'GET') {
     const all = req.query.all === 'true';
     const url = all
-      ? `${SUPABASE_URL}/rest/v1/guestbook?order=rating.desc,created_at.desc`
-      : `${SUPABASE_URL}/rest/v1/guestbook?order=rating.desc,created_at.desc&limit=3`;
+      ? `${SUPABASE_URL}/rest/v1/guestbook?order=rating.desc,visit_date.desc.nullslast`
+      : `${SUPABASE_URL}/rest/v1/guestbook?order=rating.desc,visit_date.desc.nullslast&limit=3`;
 
     const response = await fetch(url, { headers });
     const data = await response.json();

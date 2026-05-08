@@ -1048,7 +1048,7 @@ async function renderEntries() {
           <div class="gb-entry-header">
             <div class="gb-entry-author">
               <div class="gb-avatar">${initials}</div>
-              <div><div class="gb-name">${e.name}</div><div class="gb-date">${e.visit_date || ''}</div></div>
+              <div><div class="gb-name">${e.name}</div><div class="gb-date">${e.visit_date ? new Date(e.visit_date).toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : ''}</div></div>
             </div>
             <div class="gb-stars">${stars}</div>
           </div>
@@ -1073,8 +1073,8 @@ async function submitGuestbook() {
     return;
   }
   const visit_date = dateVal
-    ? new Date(dateVal + '-01').toLocaleString('en-US', { month: 'long', year: 'numeric' })
-    : new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
+    ? dateVal + '-01'
+    : new Date().toISOString().slice(0, 7) + '-01';
 
   const res = await fetch('/api/guestbook', {
     method: 'POST',

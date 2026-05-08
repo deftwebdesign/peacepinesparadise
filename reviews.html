@@ -105,7 +105,7 @@ async function loadReviews() {
           <div class="entry-header">
             <div class="entry-author">
               <div class="avatar">${initials}</div>
-              <div><div class="entry-name">${e.name}</div><div class="entry-date">${e.visit_date || ''}</div></div>
+              <div><div class="entry-name">${e.name}</div><div class="entry-date">${e.visit_date ? new Date(e.visit_date).toLocaleString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : ''}</div></div>
             </div>
             <div class="entry-stars">${stars}</div>
           </div>
