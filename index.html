@@ -1030,58 +1030,68 @@ function setRating(n) {
 }
 
 // Sample entries
-const sampleEntries = [
-  { name: 'Sarah & Mike', from: 'Phoenix, AZ', date: 'March 2026', rating: 5, msg: 'Absolutely magical! The wood stove made the cold evenings so cozy, and the stargazing from the fire pit was unforgettable. Kids loved exploring the forest. We\'ll be back every winter!' },
-  { name: 'The Johnsons', from: 'Los Angeles, CA', date: 'January 2026', rating: 5, msg: 'Perfect base camp for our Grand Canyon trip. The kitchen was fully stocked and the BBQ was a hit. Snow on the trees was like a holiday postcard.' },
-  { name: 'Emily R.', from: 'Tucson, AZ', date: 'October 2025', rating: 5, msg: 'The fall colors were incredible! We spent every evening by the propane fire pit. The retreat is immaculate and thoughtfully equipped. The air fryer was a nice surprise!' },
-];
-
-function renderEntries() {
+async function renderEntries() {
   const container = document.getElementById('gbEntries');
-  const stored = JSON.parse(localStorage.getItem('gb_entries') || '[]');
-  const all = [...stored, ...sampleEntries];
-  container.innerHTML = '';
-  all.forEach(e => {
-    const initials = e.name.split(' ').map(w => w[0]).slice(0, 2).join('');
-    const stars = '★'.repeat(e.rating) + '☆'.repeat(5 - e.rating);
-    container.innerHTML += `
-      <div class="gb-entry">
-        <div class="gb-entry-header">
-          <div class="gb-entry-author">
-            <div class="gb-avatar">${initials}</div>
-            <div><div class="gb-name">${e.name}</div><div class="gb-date">${e.date}</div></div>
+  try {
+    const res = await fetch('/api/guestbook');
+    const entries = await res.json();
+    container.innerHTML = '';
+    if (!entries.length) {
+      container.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">No reviews yet — be the first to sign the guestbook!</p>';
+      return;
+    }
+    entries.forEach(e => {
+      const initials = e.name.split(' ').map(w => w[0]).slice(0, 2).join('');
+      const stars = '★'.repeat(e.rating) + '☆'.repeat(5 - e.rating);
+      container.innerHTML += `
+        <div class="gb-entry">
+          <div class="gb-entry-header">
+            <div class="gb-entry-author">
+              <div class="gb-avatar">${initials}</div>
+              <div><div class="gb-name">${e.name}</div><div class="gb-date">${e.visit_date || ''}</div></div>
+            </div>
+            <div class="gb-stars">${stars}</div>
           </div>
-          <div class="gb-stars">${stars}</div>
-        </div>
-        <div class="gb-text">${e.msg}</div>
-        ${e.from ? `<div class="gb-origin">📍 ${e.from}</div>` : ''}
-      </div>`;
-  });
+          <div class="gb-text">${e.message}</div>
+          ${e.from_location ? `<div class="gb-origin">📍 ${e.from_location}</div>` : ''}
+        </div>`;
+    });
+    container.innerHTML += `<a href="reviews.html" style="display:inline-block;margin-top:0.5rem;font-size:0.85rem;font-weight:600;color:var(--sage);text-decoration:none;">See all reviews →</a>`;
+  } catch {
+    container.innerHTML = '<p style="color:var(--smoke);font-size:0.9rem;">Could not load reviews.</p>';
+  }
 }
 renderEntries();
 
-function submitGuestbook() {
+async function submitGuestbook() {
   const name = document.getElementById('gbName').value.trim();
-  const from = document.getElementById('gbFrom').value.trim();
+  const from_location = document.getElementById('gbFrom').value.trim();
   const dateVal = document.getElementById('gbDate').value;
-  const msg = document.getElementById('gbMsg').value.trim();
-  if (!name || !msg || !currentRating) {
+  const message = document.getElementById('gbMsg').value.trim();
+  if (!name || !message || !currentRating) {
     alert('Please fill in your name, rating, and message.');
     return;
   }
-  const dateStr = dateVal
+  const visit_date = dateVal
     ? new Date(dateVal + '-01').toLocaleString('en-US', { month: 'long', year: 'numeric' })
     : new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
-  const entry = { name, from, date: dateStr, rating: currentRating, msg };
-  const stored = JSON.parse(localStorage.getItem('gb_entries') || '[]');
-  stored.unshift(entry);
-  localStorage.setItem('gb_entries', JSON.stringify(stored));
-  document.getElementById('gbName').value = '';
-  document.getElementById('gbFrom').value = '';
-  document.getElementById('gbDate').value = '';
-  document.getElementById('gbMsg').value = '';
-  setRating(0);
-  renderEntries();
+
+  const res = await fetch('/api/guestbook', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, from_location, visit_date, rating: currentRating, message }),
+  });
+
+  if (res.ok) {
+    document.getElementById('gbName').value = '';
+    document.getElementById('gbFrom').value = '';
+    document.getElementById('gbDate').value = '';
+    document.getElementById('gbMsg').value = '';
+    setRating(0);
+    renderEntries();
+  } else {
+    alert('Something went wrong. Please try again.');
+  }
 }
 </script>
 
