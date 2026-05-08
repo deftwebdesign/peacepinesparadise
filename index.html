@@ -599,6 +599,7 @@ footer a:hover { text-decoration: underline; }
       <a href="#videos" onclick="scrollToSection(event, 'videos')">Video Tours</a>
       <a href="#location" onclick="scrollToSection(event, 'location')">Location</a>
       <a href="#guestbook" onclick="scrollToSection(event, 'guestbook')">Guestbook</a>
+      <a href="contact.html">Contact</a>
     </div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -725,14 +726,14 @@ footer a:hover { text-decoration: underline; }
         <p>Our calendar syncs with major platforms. For the most accurate availability and to secure your dates, book directly through Airbnb or VRBO.</p>
         <div class="booking-links">
           <a href="https://www.airbnb.com/rooms/43425743" target="_blank" class="booking-link">
-            <div class="booking-link-icon airbnb">A</div>
+            <div class="booking-link-icon airbnb"><img src="assets/images/airbnb.png" alt="Airbnb" style="width:28px;height:28px;object-fit:contain;"></div>
             <div>
               <div class="bl-label">Book on</div>
               <div class="bl-name">Airbnb</div>
             </div>
           </a>
           <a href="https://www.vrbo.com/1981263" target="_blank" class="booking-link">
-            <div class="booking-link-icon vrbo">V</div>
+            <div class="booking-link-icon vrbo"><img src="assets/images/vrbo.png" alt="VRBO" style="width:28px;height:28px;object-fit:contain;"></div>
             <div>
               <div class="bl-label">Book on</div>
               <div class="bl-name">VRBO</div>
@@ -740,7 +741,7 @@ footer a:hover { text-decoration: underline; }
           </a>
         </div>
         <p style="margin-top:1.5rem; font-size:0.85rem; color: var(--smoke);">
-          <strong>Tip:</strong> For synced real-time availability, you can embed an iCal feed from your Airbnb or VRBO calendar. Contact us to set this up.
+          <strong>Tip:</strong> <a href="contact.html" style="color:var(--sage);font-weight:600;">Reach out</a> if you'd like to book directly.
         </p>
       </div>
     </div>
@@ -866,6 +867,7 @@ footer a:hover { text-decoration: underline; }
       <button class="modal-close" onclick="closeAmenityModal()">✕</button>
     </div>
     <img class="modal-img" id="modalImg" src="" alt="">
+    <p id="modalDesc" style="padding:0.85rem 1.25rem;font-size:0.85rem;color:var(--smoke);display:none;"></p>
   </div>
 </div>
 
@@ -895,19 +897,19 @@ window.addEventListener('scroll', () => {
 
 // ─── AMENITIES ───
 const amenities = [
-  { icon: '☕', name: 'Coffee Maker', desc: 'Drip coffee maker with complimentary grounds', image: 'assets/images/coffee_maker.jpg' },
+  { icon: '☕', name: 'Coffee Maker', desc: 'Drip coffee maker with complimentary grounds', image: 'assets/images/coffee_maker.jpg', imageDesc: 'Calphalon 10-Cup Coffee Maker' },
   { icon: '🔥', name: 'Wood Stove', desc: 'Cozy warmth on chilly mountain evenings' },
   { icon: '🛏️', name: 'Air Mattress', desc: 'Extra sleeping space for additional guests' },
   { icon: '👶', name: 'High Chair', desc: 'Family-friendly dining for little ones' },
   { icon: '🍳', name: 'Air Fryer', desc: 'Quick and easy cooking for any meal' },
-  { icon: '⛱️', name: 'Gazebo', desc: 'Shaded outdoor lounging area with table and chairs', image: 'assets/images/gazebo.png' },
+  { icon: '⛱️', name: 'Gazebo', desc: 'Shaded outdoor lounging area with table and chairs', image: 'assets/images/gazebo.png', imageDesc: 'Outdoor gazebo with table and 6 chairs.' },
   { icon: '🥩', name: 'Gas Barbecue', desc: 'Full-size propane grill for cookouts' },
   { icon: '🔥', name: 'Propane Fire Pit', desc: 'Evenings under the stars around the flames' },
-  { icon: '📶', name: 'Wi-Fi', desc: 'Stay connected in the forest', link: 'internet.html' },
+  { icon: '📶', name: 'Wi-Fi', desc: 'Stay connected in the forest', image: 'assets/images/starlink.png', imageDesc: 'High speed internet provided by Starlink. <a href="internet.html" target="_blank" style="color:var(--sage);font-weight:600;">View Wi-Fi details & password →</a>' },
   { icon: '🅿️', name: 'Free Parking', desc: 'Plenty of space for vehicles' },
   { icon: '🧺', name: 'Washer & Dryer', desc: 'Full laundry available on-site' },
   { icon: '🌡️', name: 'Heating & Cooling', desc: 'Central heat plus the wood stove' },
-  { icon: '📺', name: 'Smart TV', desc: 'Stream your favorites with Netflix & more' },
+  { icon: '📺', name: 'Smart TVs', desc: 'Stream your favorites with Netflix & more' },
   { icon: '🍽️', name: 'Full Kitchen', desc: 'Everything you need to cook a feast' },
   { icon: '🧹', name: 'Clean Linens', desc: 'Fresh towels and bedding provided' },
   { icon: '🌲', name: 'Private Lot', desc: 'Surrounded by ponderosa pines' },
@@ -923,15 +925,18 @@ amenities.forEach(a => {
     card.style.textDecoration = 'none';
     card.style.color = 'inherit';
   } else if (a.image) {
-    card.addEventListener('click', () => openAmenityModal(a.name, a.image));
+    card.addEventListener('click', () => openAmenityModal(a.name, a.image, a.imageDesc));
   }
   amenGrid.appendChild(card);
 });
 
-function openAmenityModal(title, img) {
+function openAmenityModal(title, img, desc) {
   document.getElementById('modalTitle').textContent = title;
   document.getElementById('modalImg').src = img;
   document.getElementById('modalImg').alt = title;
+  const descEl = document.getElementById('modalDesc');
+  if (desc) { descEl.innerHTML = desc; descEl.style.display = 'block'; }
+  else { descEl.innerHTML = ''; descEl.style.display = 'none'; }
   document.getElementById('amenityModal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
